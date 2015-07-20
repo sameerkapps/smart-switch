@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout1"
+        android:layout_marginTop="0dp">
+        <Mvx.MvxSpinner
+            android:layout_width="211.8dp"
+            android:layout_height="?android:attr/listPreferredItemHeight"
+            android:id="@+id/deviceSpinner"
+            local:MvxBind="ItemsSource Devices;SelectedItem SelectedDevice" />
+        <Button
+            android:text="Refresh"
+            android:layout_width="128.2dp"
+            android:layout_height="match_parent"
+            android:id="@+id/btnRefresh"
+            local:MvxBind="Click Refresh"
+            android:layout_gravity="right"
+            android:layout_marginRight="10.0dp" />
+    </LinearLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnConnect"
+        local:MvxBind="Click Connect;Text ConnectText" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout2">
+        <TextView
+            android:text="Switch is: "
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="200dp"
+            android:layout_height="43.4dp"
+            android:id="@+id/txtViewSwitch"
+            android:gravity="right" />
+        <ToggleButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnOnOff"
+            local:MvxBind="Enabled IsConnected;Checked IsOn"
+            android:minWidth="100.0dp" />
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="43.4dp"
+        android:id="@+id/txtViewErr"
+        android:textColor="#FFFF00"
+        local:MvxBind="Text ErrorMessage" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="100.4dp"
+        android:textSize="22sp"
+        android:id="@+id/txtViewErr"
+        local:MvxBind="Text Description" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="43.4dp"
+        android:id="@+id/txtViewHack"
+        android:textColor="#FFFF00"
+        android:textSize="16sp"
+        android:linksClickable="true"
+        android:autoLink="web"
+        android:layout_gravity="center_horizontal"
+        android:clickable="true"
+        local:MvxBind="Text HacksterUrl" />
+</LinearLayout>

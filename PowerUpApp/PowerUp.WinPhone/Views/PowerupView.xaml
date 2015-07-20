@@ -1,0 +1,114 @@
+﻿<views:MvxPhonePage
+    x:Class="Powerup.WinPhone.Views.PowerupView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+     xmlns:views="clr-namespace:Cirrious.MvvmCross.WindowsPhone.Views;assembly=Cirrious.MvvmCross.WindowsPhone"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    mc:Ignorable="d"
+    >
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="Smart Switch" FontSize="48" Margin="9,-7,0,0" />
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <toolkit:ListPicker 
+                                    Margin="5,0,5,0" FontSize="32"
+                                    VerticalAlignment="Top"
+                                    ItemsSource="{Binding Devices}"
+                                    SelectedItem="{Binding SelectedDevice, Mode=TwoWay}"
+                                    DisplayMemberPath="DisplayName"/>
+
+                <Button Grid.Column="1"
+                        Width="150"
+                        Margin="5,0,5,0"
+                        VerticalAlignment="Top"
+                        Command="{Binding Refresh}"
+                        Content="Refresh"/>
+            </Grid>
+
+            <Button Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" 
+                    HorizontalAlignment="Center"
+                    MinWidth="200"
+                    Content="{Binding ConnectText}" 
+                    Command="{Binding Connect}"/>
+
+            <TextBlock Grid.Row="2" Grid.Column="0" 
+                       Text="Switch is"
+                       FontSize="22"
+                       HorizontalAlignment="Right" 
+                       VerticalAlignment="Center"/>
+
+            <toolkit:ToggleSwitch Grid.Row="2" Grid.Column="1"
+                                  HorizontalAlignment="Center" VerticalAlignment="Center"
+                                  IsChecked="{Binding IsOn, Mode=TwoWay}"
+                                  IsEnabled="{Binding IsConnected, Mode=OneWay}"/>
+
+            <TextBlock Grid.Row="3" Grid.ColumnSpan="2" 
+                       TextWrapping="Wrap"
+                       Height="80"
+                       FontSize="18"
+                       HorizontalAlignment="Center"
+                       Foreground="Yellow"
+                       Text="{Binding ErrorMessage, Mode=OneWay}"/>
+
+            <TextBlock Grid.Row="4"
+                       Grid.ColumnSpan="2" 
+                       Margin="0,30,0,0"
+                       TextWrapping="Wrap"
+                       Height="150"
+                       FontSize="32"
+                       HorizontalAlignment="Center"
+                       Text="{Binding Description}"/>
+
+            <HyperlinkButton Grid.Row="5"
+                             Grid.ColumnSpan="2" 
+                             FontSize="16"
+                             Content="{Binding HacksterUrl}"
+                             Click="HacksterLink_Click"/>
+            
+            <TextBlock Grid.Row="6"
+                       Grid.ColumnSpan="2" 
+                       Margin="0,30,0,0"
+                       TextWrapping="Wrap"
+                       FontSize="16"
+                       Foreground="Yellow"
+                       HorizontalAlignment="Center"
+                       Text="Tip: If connect fails, go to Bluetooth manager settings. Connect it manually and disconnect. Then try again. "/>
+        </Grid>
+    </Grid>
+</views:MvxPhonePage>
