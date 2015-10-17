@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" package="com.SmartSwitch.Form">
+	<uses-sdk android:minSdkVersion="18" android:targetSdkVersion="18" />
+	<application android:label="Smart Switch" android:icon="@drawable/icon"></application>
+	<uses-permission android:name="android.permission.BLUETOOTH" />
+	<uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+	<uses-permission android:name="android.permission.BLUETOOTH_PRIVILEGED" />
+</manifest>
